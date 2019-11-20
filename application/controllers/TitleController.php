@@ -25,53 +25,57 @@ class TitleController extends CI_Controller {
 		$this->load->view('titleListView',$data);
 	}
 
-	// public function editAuthor($authorID)
- //    {	$data['edit_data']= $this->AuthorModel->drilldown($authorID);
-	// 	$this->load->view('updateAuthorView', $data);
- //    }
+	public function editTitle($ISBN)
+    {	$data['edit_data']= $this->TitleModel->drilldown($ISBN);
+		$this->load->view('updateTitleView', $data);
+    }
 
-	// public function deleteAuthor($authorID)
- //    {	$deletedRows = $this->AuthorModel->deleteAuthorModel($authorID);
-	// 	if ($deletedRows > 0)
-	// 		$data['message'] = "$deletedRows author has been deleted";
-	// 	else
-	// 		$data['message'] = "There was an error deleting the author with an ID of $authorID";
-	// 	$this->load->view('displayMessageView',$data);
- //    }
+	public function deleteTitle($ISBN)
+    {	$deletedRows = $this->TitleModel->deleteTitleModel($ISBN);
+		if ($deletedRows > 0)
+			$data['message'] = "$deletedRows title has been deleted";
+		else
+			$data['message'] = "There was an error deleting the title with an ISBN of $ISBN";
+		$this->load->view('displayMessageView',$data);
+    }
 
-  //   public function updateAuthor($authorID)
-  //   {	$pathToFile = $this->uploadAndResizeFile();
-		// $this->createThumbnail($pathToFile);
+    public function updateTitle($ISBN)
+    {	$pathToFile = $this->uploadAndResizeFile();
+		$this->createThumbnail($pathToFile);
 
-		// //set validation rules
-		// $this->form_validation->set_rules('authorID', 'Author ID', 'required');
-		// $this->form_validation->set_rules('firstName', 'First Name', 'required');
-		// $this->form_validation->set_rules('lastName', 'Last Name', 'required');	
-		// $this->form_validation->set_rules('yearBorn', 'Year Born', 'required');
+		//set validation rules
+		$this->form_validation->set_rules('ISBN', 'ISBN', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'required');
+		$this->form_validation->set_rules('editionNumber', 'Edition Number', 'required');	
+		$this->form_validation->set_rules('yearPublished', 'Year Published', 'required');
+		$this->form_validation->set_rules('publisherID', 'Publisher ID', 'required');
+		$this->form_validation->set_rules('price', 'Price', 'required');
 	
-		// //get values from post
-		// $authorID = $this->input->post('authorID');
-		// $anAuthor['firstName'] = $this->input->post('firstName');
-		// $anAuthor['lastName'] = $this->input->post('lastName');
-		// $anAuthor['yearBorn'] = $this->input->post('yearBorn');
-		// $anAuthor['image'] = $_FILES['userfile']['name'];
+		//get values from post
+		$aTitle['ISBN'] = $this->input->post('ISBN');
+		$aTitle['title'] = $this->input->post('title');
+		$aTitle['editionNumber'] = $this->input->post('editionNumber');
+		$aTitle['yearPublished'] = $this->input->post('yearPublished');
+		$aTitle['publisherID'] = $this->input->post('publisherID');
+		$aTitle['price'] = $this->input->post('price');
+		$aTitle['image'] = $_FILES['userfile']['name'];
 
-		// //check if the form has passed validation
-		// if (!$this->form_validation->run()){
-		// 	//validation has failed, load the form again
-		// 	$this->load->view('updateAuthorView', $anAuthor);
-		// 	return;
-		// }
+		//check if the form has passed validation
+		if (!$this->form_validation->run()){
+			//validation has failed, load the form again
+			$this->load->view('updateTitleView', $aTitle);
+			return;
+		}
 
 		
-		// //check if update is successful
-		// if ($this->AuthorModel->updateAuthorModel($anAuthor, $authorID)) {
-		// 	redirect('AuthorController/listAuthors');
-		// }
-		// else {
-		// 	$data['message']="Uh oh ... problem on update";
-		// }
-  //   }
+		//check if update is successful
+		if ($this->TitleModel->updateTitleModel($aTitle, $ISBN)) {
+			redirect('TitleController/listTitles');
+		}
+		else {
+			$data['message']="Uh oh ... problem on update";
+		}
+    }
 
 	public function handleInsert(){
 		if ($this->input->post('submitInsert')){

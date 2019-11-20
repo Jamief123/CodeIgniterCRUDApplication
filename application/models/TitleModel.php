@@ -25,18 +25,18 @@ class TitleModel extends CI_Model
 		return $query->result();
 	}
 	
-	// public function deleteAuthorModel($id)
-	// {	$this->db->where('AuthorID', $id);
-	// 	return $this->db->delete('authors');
- //    }
+	public function deleteTitleModel($ISBN)
+	{	$this->db->where('ISBN', $ISBN);
+		return $this->db->delete('titles');
+    }
 
-	// function updateAuthorModel($author,$id)
-	// {	$this->db->where('AuthorID', $id);
-	// 	return $this->db->update('authors', $author);
-	// }
+	function updateTitleModel($author,$ISBN)
+	{	$this->db->where('ISBN', $ISBN);
+		return $this->db->update('titles', $author);
+	}
 
 	public function drilldown($ISBN)
-	{	$this->db->select("Title,EditionNumber,YearPublished,PublisherID,Image"); 
+	{	$this->db->select("ISBN,Title,EditionNumber,YearPublished,PublisherID,Image"); 
 		$this->db->from('titles');
 		$this->db->where('ISBN',$ISBN);
 		$query = $this->db->get();
