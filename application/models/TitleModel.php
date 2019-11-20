@@ -8,15 +8,15 @@ class TitleModel extends CI_Model
 		$this->load->database();
     }
 	
-	// function insertAuthorModel($author)
-	// {	$this->db->insert('authors',$author);
-	// 	if ($this->db->affected_rows() ==1) {
-	// 		return true;
-	// 	}
-	// 	else {
-	// 		return false;
-	// 	}
-	// }
+	function insertTitleModel($title)
+	{	$this->db->insert('titles',$title);
+		if ($this->db->affected_rows() ==1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 
 	function get_all_titles() 
 	{	$this->db->select("*"); 

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-	//$this->load->view('header'); 
+	$this->load->view('header'); 
 	$this->load->helper('url');
 	$base = base_url() . index_page();
 	$img_base = base_url()."assets/images/";
@@ -35,6 +35,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    </table>
    <br><br>
 </div>
-<!-- <?php
+<?php
 	$this->load->view('footer'); 
-?> -->
+?> 

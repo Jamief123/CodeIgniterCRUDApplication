@@ -1,0 +1,30 @@
+body {
+	background-color: AliceBlue;
+	margin: 40px;
+	font: 13px/20px normal Helvetica, Arial, sans-serif;
+	color: #4F5155;
+}
+
+form { 
+	margin: 0 auto; 
+	width:300px;
+}
+
+header{
+	font-size:200%;
+	text-align:center;	
+}
+
+footer{
+	font-size:smaller;
+	text-align:center;	
+}
+
+.main{
+	text-align:center;
+}
+
+.list { 
+	margin: 0 auto; 
+	width:800px;
+}
