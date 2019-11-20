@@ -35,13 +35,13 @@ class TitleModel extends CI_Model
 	// 	return $this->db->update('authors', $author);
 	// }
 
-	// public function drilldown($author)
-	// {	$this->db->select("AuthorID,FirstName,LastName,YearBorn,Image"); 
-	// 	$this->db->from('authors');
-	// 	$this->db->where('AuthorID',$author);
-	// 	$query = $this->db->get();
-	// 	return $query->result();
- //    }
+	public function drilldown($ISBN)
+	{	$this->db->select("Title,EditionNumber,YearPublished,PublisherID,Image"); 
+		$this->db->from('titles');
+		$this->db->where('ISBN',$ISBN);
+		$query = $this->db->get();
+		return $query->result();
+    }
 
 }
 ?>

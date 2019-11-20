@@ -24,14 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<td><?php echo $row->YearPublished;?></td>
 			<td><?php echo $row->PublisherID;?></td>
 			<td><img src="<?php echo $img_base.'thumbs/'.$row->Image;?>"></td>
-			<td><?php echo anchor('AuthorController/viewTitle/'.$row->ISBN, 'View'); ?> </td>
+			<td><?php echo anchor('TitleController/viewTitle/'.$row->ISBN, 'View'); ?> </td>
 
 
 			<!-- <td><?php echo anchor('TitleController/viewTitle/'.$row->AuthorID, 'View'); ?> </td>
 			<td><?php echo anchor('TitleController/editTitle/'.$row->AuthorID, 'Update'); ?> </td>			
 			<td><?php echo anchor('TitleController/deleteTitle/'.$row->AuthorID, 'Delete', 'onclick = "return checkDelete()"'); ?> </td> -->
 		</tr>     
-		<?php }?>  
+		<?php }//end foreach?> 
    </table>
    <br><br>
 </div>

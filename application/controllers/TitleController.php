@@ -15,10 +15,10 @@ class TitleController extends CI_Controller {
 	{	$this->load->view('index');
 	}
 
-	// public function viewAuthor($authorID)
- //    {	$data['view_data']= $this->AuthorModel->drilldown($authorID);
-	// 	$this->load->view('AuthorView', $data);
- //    }
+	public function viewTitle($ISBN)
+    {	$data['view_data']= $this->TitleModel->drilldown($ISBN);
+		$this->load->view('TitleView', $data);
+    }
 
 	public function listTitles() 
 	{	$data['title_info']=$this->TitleModel->get_all_titles();
